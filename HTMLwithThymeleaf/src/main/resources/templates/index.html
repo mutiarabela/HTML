@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h2>Users</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Place of Birth</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Status</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Hobby</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${allUsers}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.birthplace}"></td>
+        <td th:text="${user.birthdate}"></td>
+        <td th:text="${user.gender}"></td>
+        <td th:text="${user.status}"></td>
+        <td th:text="${user.address}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.hobby}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<p><a href="/addUser">Add a new user</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+</head>
+<body>
+<form action="#" th:action="@{/addUser}" th:object="${user}" method="post">
+    <table>
+        <tr>
+            <td><label>Name</label></td>
+            <td><input type="text" th:field="*{name}" id="name" placeholder="Name"></td>
+            <td><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></td>
+        </tr>
+        <tr>
+            <td><label>Place of Birth</label></td>
+            <td><input type="text" th:field="*{birthplace}" id="birthplace" placeholder="Place of Birth"></td>
+            <td><span th:if="${#fields.hasErrors('birthplace')}" th:errors="*{birthplace}"></span></td>
+        </tr>
+        <tr>
+            <td><label>Date of Birth</label></td>
+            <td><input type="text" th:field="*{birthdate}" id="birthdate" placeholder="Date of Birth"></td>
+            <td><span th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}"></span></td>
+        </tr>
+        <tr>
+            <td><label>Gender</label></td>
+            <td colspan="2">
+                <input type="radio" th:field="*{gender}" value="Male"/><label>Male</label>
+                <input type="radio" th:field="*{gender}" value="Female"/><label>Female</label>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Status</label></td>
+            <td colspan="2">
+                <select th:field="*{status}">
+                    <option th:each="status : ${allStats}" th:value="${status}" th:text="${status}">Your Status</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td><label>Address</label></td>
+            <td><textarea type="text" th:field="*{address}" id="address" placeholder="Address"></textarea></td>
+            <td><span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span></td>
+        </tr>
+        <tr>
+            <td><label>Email</label></td>
+            <td><input type="text" th:field="*{email}" id="email" placeholder="Email">
+            <td><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span></td>
+        </tr>
+        <tr><td><label>Hobby</label></td>
+            <td>
+                <ul>
+                    <li th:each="hobby : ${allHobbies}">
+                        <input type="checkbox" th:field="*{hobby}" th:value="${hobby}" />
+                        <label th:for="${#ids.prev('hobby')}"
+                               th:text="${hobby}">Hobby</label>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><input type="submit" value="Add User"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
